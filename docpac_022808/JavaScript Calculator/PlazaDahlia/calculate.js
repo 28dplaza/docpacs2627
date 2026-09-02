@@ -1,32 +1,44 @@
 function calculate() {
-    let firstNumber = document.getElementById("firstNumber").value
-    firstNumber = Number(firstNumber)
-    console.log(firstNumber);
-    let secondNumber = document.getElementById("secondNumber").value
-    secondNumber = Number(secondNumber)
-    console.log(secondNumber);
-    let operation = document.getElementById("operation").value
-    console.log(operation);
-    let result = document.getElementById("result")
-    console.log(result);
+    let firstInput = document.getElementById("firstNumber").value;
+    let secondInput = document.getElementById("secondNumber").value;
 
+    if (firstInput === "" || secondInput === "") {
+        document.getElementById("result").value = "Please enter two numbers.";
+        return;
+    }
+
+    let firstNumber = Number(firstInput);
+    let secondNumber = Number(secondInput);
+    let operation = document.getElementById("operation").value;
+
+    if (isNaN(firstNumber) || isNaN(secondNumber)) {
+        document.getElementById("result").value = "Please enter two numbers.";
+        return;
+    }
+
+    let result;
     if (operation == "+") {
-        result.innerText = firstNumber + secondNumber
-    } else if (operation == "-") {
-        result.innerText = firstNumber - secondNumber
-    } else if (operation == "*") {
-        result.value = firstNumber * secondNumber
-    } else if (operation == "/") {
-        if (secondNumber != 0) {
-            result.innerText = firstNumber / secondNumber
+        result = firstNumber + secondNumber;
+    }
+    else if (operation == "-") {
+        result = firstNumber - secondNumber;
+    }
+    else if (operation == "*") {
+        result = firstNumber * secondNumber;
+    }
+    else if (operation == "/") {
+        if (secondNumber == 0) {
+            result = "Error!";
         } else {
-            result.innerText = "Cannot divide by zero"
-        }
-    } else {
-        if (secondNumber != 0) {
-            result.innerText = firstNumber % secondNumber
-        } else {
-            result.innerText = "Cannot divide by zero"
+            result = firstNumber / secondNumber;
         }
     }
+    else if (operation == "%") {
+        if (secondNumber == 0) {
+            result = "Error!";
+        } else {
+            result = firstNumber % secondNumber;
+        }
+    }
+    document.getElementById("result").value = result;
 }
