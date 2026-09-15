@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>html form</title>
 </head>
+
 <body>
     <h2>Insert your name</h2>
+    <p>Fill out this required form</p>
     <form id="projectInterestForm" method="POST" action="/form">
         <label for="studentName">Name</label>
-        <input type="text" id="input" name="name">
+        <input type="text" id="studentName" name="studentName" required>
+        <label for="Email">Email:</label>
+        <input type="email" id="Email" name="Email" required>
+        <label for="teamSize">Team Size:</label>
+        <input type="number" min=1 max=4 id="teamSize" name="teamSize" required>
         <button type="submit">Submit</button>
+        <br></br>
+        <fieldset>
+            <legend>Preferred project type</legend>
+            <input type="radio" id="website" name="projectType" value="Website" required>
+            <label for="website">Website</label><br>
+            <input type="radio" id="game" name="projectType" value="Game">
+            <label for="game">Game</label><br>
+            <input type="radio" id="dataApp" name="projectType" value="dataApplication">
+            <label for="dataApp">Data Application</label>
+        </fieldset>
     </form>
 </body>
+
 </html>
