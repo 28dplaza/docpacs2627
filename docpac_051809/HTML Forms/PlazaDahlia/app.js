@@ -9,7 +9,7 @@ const server = http.createServer((req, res) => {
     if (req.url === '/') {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('testing\n');
-    } else if (req.url === '/form') {
+    } else if (req.url === '/form' && req.method == 'GET') {
         fs.readFile('pages/form.html', 'utf8', (err, data) => {
             if (err) {
                 res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -18,6 +18,16 @@ const server = http.createServer((req, res) => {
                 res.writeHead(200, { 'Content-Type': 'text/html' });
                 res.end(data);
             }
+        });
+    }
+    else if (req.url === '/form' && req.method == 'POST') {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        let rawBody = ''
+        req.on('data', (chunk) => { rawBody += chunk; })
+        req.on('end', () => {
+            const params = new URLSearchParams(rawBody);
+            const studentName = params.get('studentName');
+            res.end(studentName);
         });
     }
     else {
