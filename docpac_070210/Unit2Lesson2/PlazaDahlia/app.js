@@ -4,6 +4,10 @@ const app = express();
 const path = require('path');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
 app.get('/', (req, res) => {
     res.send('<h2 id="title">This is Forms and Stuff</h2><p>This where all the forms and stuff will be</p><a href="/form">The Project Interest Form</a>')
 });
