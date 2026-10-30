@@ -2,8 +2,9 @@ require('dotenv').config();
 const requestLogger = require('./utils/requestLogger');
 const express = require('express')
 const app = express();
-app.set('view engine', '')
 const path = require('path');
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, 'views'))
 const pageRoutes = require('./routes/pageRoutes');
 const formRoutes = require('./routes/formRoutes');
 const parameterRoutes = require('./routes/parameterRoutes');
