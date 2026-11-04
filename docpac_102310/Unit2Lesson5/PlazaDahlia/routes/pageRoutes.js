@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
 router.get('/', (req, res) => {
-    res.send('<h2 id="title">This is Forms and Stuff</h2><p>This where all the forms and stuff will be</p><a href="/form">The Project Interest Form</a>')
+    res.render('index', { pageTitle: 'Homepage', appName: process.env.APP_NAME, message:'This is where all the forms and stuff will be'});
 });
 module.exports = router;
