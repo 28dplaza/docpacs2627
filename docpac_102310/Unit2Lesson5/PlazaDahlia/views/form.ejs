@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>html form</title>
-</head>
-
-<body>
-    <h2>Form</h2>
-    <p>Fill out this required form</p>
+<%- include('partials/header') %>
+<h2><%=formTitle%></h2>
+<p><%= instructions %></p>
     <form id="projectInterestForm" method="POST" action="/form">
         <label for="studentName">Name</label>
         <input type="text" id="studentName" name="studentName" required>
@@ -63,5 +54,4 @@
         <button type="submit">Submit Interest Form</button>
         <button type="reset">Reset Form</button>
     </form>
-</body>
-</html>
+<%- include ('partials/footer') %>
