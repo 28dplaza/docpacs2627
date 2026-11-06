@@ -7,7 +7,7 @@ router.get('/form', (req, res) => {
 router.post('/form', (req, res) => {
     const name = req.body.studentName?.trim();
     if (!name) {
-        res.status(400).render('formResponse', {name: null, error: 'Invalid Name'});
+        res.status(400).render('error', {statusCode: 400, error: 'Invalid Input', message: 'Please input a name'});
     } else {
         res.status(200).render('formResponse', {name: name, error: null});
     }

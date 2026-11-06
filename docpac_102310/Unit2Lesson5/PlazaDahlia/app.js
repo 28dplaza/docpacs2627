@@ -15,7 +15,7 @@ app.use(pageRoutes);
 app.use(formRoutes);
 app.use(parameterRoutes);
 app.use((req, res) => {
-    res.status(404).send('404 - Page Not Found');
+    res.status(404).render('error', {statusCode: 404, error: 'Page Not Found', message: 'The page you requested does not exist'});
 });
 app.listen(process.env.PORT, 'localhost', () => {
     console.log(`${process.env.APP_NAME} is running at http://localhost:${process.env.PORT}/`);
