@@ -1,0 +1,9 @@
+<%- include('partials/header') %>
+<h2><%= pageTitle %></h2>
+<h3><%= appName %></h3>
+<p><%= message %></p>
+<% navLinks.forEach(function(link) { %>
+    <a href="<%= link.pageDestination %>"><br><%= link.pageName %></a>
+    <%= link.pageDescription %>
+<% }); %>
+<%- include ('partials/footer') %>
