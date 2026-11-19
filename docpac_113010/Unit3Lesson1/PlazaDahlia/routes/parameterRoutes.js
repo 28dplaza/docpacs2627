@@ -6,7 +6,7 @@ router.get('/query', (req, res) => {
     if (!message) {
         res.status(400).render('error', {statusCode: 400, error: 'Invalid Message', message: 'Please provide a message: /query?message=YourMessage'});
     } else {
-        const result = model.createEntry(message, 'urlparam');
+        const result = model.createEntry(message, 'query');
         const entries = model.getAllEntries();
         res.status(200).render('queryResponse', {message: message, error: null, entries: entries});
     }
