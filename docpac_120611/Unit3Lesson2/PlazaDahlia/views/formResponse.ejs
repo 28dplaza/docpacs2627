@@ -1,0 +1,10 @@
+<%- include ('partials/header') %>
+<p>Thanks, <%=name%>!</p>
+<% if (entries.length === 0) { %>
+    <p>No entries yet</p>
+<%} else { %>
+    <% entries.forEach(entry => { %>
+    <p>Value: <%= entry.submitted_value %>, Source: <%= entry.source %>, Time: <%= entry.timestamp %></p>
+<% }); } %>
+<%- include ('partials/links') %>
+<%- include ('partials/footer') %>
