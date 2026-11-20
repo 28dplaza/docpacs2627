@@ -1,5 +1,6 @@
 require('dotenv').config();
 const requestLogger = require('./utils/requestLogger');
+const sessionConfig = require('./utils/sessionConfig')
 const express = require('express')
 const app = express();
 const path = require('path');
@@ -11,6 +12,7 @@ const parameterRoutes = require('./routes/parameterRoutes');
 app.use(requestLogger);
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+app.use(sessionConfig)
 app.use(pageRoutes);
 app.use(formRoutes);
 app.use(parameterRoutes);

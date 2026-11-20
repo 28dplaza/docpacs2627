@@ -8,12 +8,15 @@ const store = new SqliteStore({
     database: db
 });
 const sessionMiddleware = session({
-    secret: SESSION_SECRET,
+    name: 'sessionID',
+    secret: process.env.SESSION_SECRET,
     store: store,
     resave: false,
     saveUninitialized: false,
     cookie: {
-
+        maxAge: 86400000,
+        httpOnly: true,
+        secure: false
     }
 });
-module.exports = store
+module.exports = sessionMiddleware
